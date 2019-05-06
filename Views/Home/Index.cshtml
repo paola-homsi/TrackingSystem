@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Style.css" rel="stylesheet" />
+
+
+<div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                
+                <a class="navbar-brand" href="#">Tracking System</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <select id="CustomerSelect" data-bind="foreach: Customers, event: { change: CustomerChanged }">
+                            <option data-bind="text: Name,
+                                    value: ID"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select data-bind="foreach: Status, event: {change: StatusChanged}">
+                            <option data-bind="text: Title"></option>
+                        </select>
+                    </div>
+                    
+                </form>
+            </div><!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <div class="container" style="margin-top:150px;">
+        <ul id="VehiclesList" data-bind="foreach: Vehicles">
+            <li class="card">
+                <label>Number</label>
+                <p data-bind="text: PlateNumber"></p>
+                <label>Status: </label>
+
+                <p data-bind="text: Status.Title"></p>
+                <label>Owner Name: </label>
+
+                <p data-bind="text: Owner.Name"></p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    //$(document).ready(function () {
+    //    $.ajax({
+    //        url: 'api/Vehicle',
+    //        type: 'POST',
+    //        success: function (res) {
+    //            console.log(res)
+    //        }
+    //    })
+    //})
+</script>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/knockout-3.5.0.js"></script>
+
+<script src="~/Scripts/Vehicles.js"></script>
